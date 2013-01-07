@@ -1,0 +1,28 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#log {
+    border: thin solid black;
+    min-height: 300px;
+    max-height: 300px;
+    overflow-x: scroll;
+    list-style-type: none;
+    padding: 0px;
+}
+
+#log .sent {
+    color: blue;
+}
+
+#log .received {
+    color: green;
+}
+
+#log .error {
+    color: red;
+}
+
+#textOutgoing {
+    width: 100%;
+}
