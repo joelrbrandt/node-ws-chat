@@ -29,7 +29,8 @@
     
     var http            = require('http'),
         connect         = require('connect'),
-        WebSocketServer = require('ws').Server;
+        WebSocketServer = require('ws').Server,
+        util            = require('util');
     
     var connections = [];
     var connectionCount = 1;
@@ -39,6 +40,10 @@
         // the connection array
         conn.connectionID = connectionCount++;
         connections.push(conn);
+        
+        function logMessage(message, sender) {
+            util.print(util.format("Message '%s' sent by %d\n", message, sender));
+        }
         
         // Set up handlers for events that happen on this connection
         
@@ -51,7 +56,7 @@
         });
         
         conn.on('message', function (message) {
-            console.log('received from %d: %s', conn.connectionID, message);
+            logMessage(message, conn.connectionID);
             // send message to all other connections
             connections.forEach(function (otherConn) {
                 if (otherConn !== conn) {
@@ -76,7 +81,7 @@
     var app = connect()
         .use(connect.favicon())
         .use(connect.logger('dev'))
-        .use(connect['static']('public'));
+        .use(connect['static'](__dirname));
     var server = http.createServer(app);
     
     // Create the WebSocket server and attach it to the http server
@@ -86,7 +91,7 @@
     wss.on('connection', handleWebSocketConnection);
     
     // Start the whole server listening on a randomly assigned port
-    server.listen(0, '127.0.0.1', function () {
+    server.listen(3000, '127.0.0.1', function () {
         var address = server.address();
         console.log("Listening on http://" +
                     address.address + ":" + address.port);

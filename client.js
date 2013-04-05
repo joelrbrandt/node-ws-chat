@@ -64,9 +64,9 @@
         var wsUrl;
         // "wss" is for secure conenctions over https, "ws" is for regular
         if (window.location.protocol === "https:") {
-            wsUrl = "wss://" + window.location.host;
+            wsUrl = "wss://127.0.0.1:3000/";
         } else {
-            wsUrl = "ws://" + window.location.host;
+            wsUrl = "ws://127.0.0.1:3000/";
         }
         
         // create the websocket and immediately bind handlers
