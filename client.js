@@ -49,7 +49,12 @@
     function sendMessage(message) {
         var success = false;
         if (ws && ws.readyState === WebSocket.OPEN) {
-            success = ws.send(message);
+            try {
+                ws.send(message);
+                success = true;
+            } catch (e) {
+                console.error("Error sending message", e);
+            }
         }
         
         if (success) {
