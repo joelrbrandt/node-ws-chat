@@ -1,13 +1,13 @@
 {
   "name": "node-ws-chat",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple chatroom using node, connect, and ws",
   "main": "server.js",
   "repository": "",
-  "author": "Joel Brandt <jobrandt@adobe.com>",
+  "author": "Joel Brandt <joelrbrandt@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "connect": "~2.7.2",
-    "ws": "~0.4.25"
+    "connect": "~2.8.5",
+    "ws": "~0.4.28"
   }
 }
